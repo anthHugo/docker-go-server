@@ -1,0 +1,13 @@
+version: '3.5'
+
+services:
+
+    golang:
+        container_name: go_app
+        build: .
+        volumes:
+            - .:/var/www/html
+        ports:
+            - "8080:8080"
+        restart: unless-stopped
+        command: bash -c "go mod download && make serve"
