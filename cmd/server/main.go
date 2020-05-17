@@ -7,10 +7,10 @@ import (
 )
 
 func handler(w http.ResponseWriter, r *http.Request) {
-    fmt.Fprintf(w, "Hello world\r\npath: /%s", r.URL.Path[1:])
+    fmt.Fprintf(w, "Hello World\r\npath: /%s", r.URL.Path[1:])
 }
 
 func main() {
     http.HandleFunc("/", handler)
-    log.Fatal(http.ListenAndServe(":8080", nil))
+    log.Fatal(http.ListenAndServe(":80", nil))
 }

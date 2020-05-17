@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+    golang:
+        hostname: ${PROJECT_NAME}-go
+        build:
+            context: .
+            args:
+                DOCKER_UID: ${DOCKER_UID}
+        volumes:
+            - ../../..:/var/www/html
+        ports:
+            - ${WEB_PORT}:80
+        restart: unless-stopped
+        command: bash -c "go mod download && make serve"
